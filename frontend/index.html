@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Hospital Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="page active">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>MediCare</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <div class="nav-buttons">
+                         <a href="/login" class="btn btn-outline">Login</a>
+                        <a href="/register" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section id="home" class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1>Modern Healthcare Management</h1>
+                        <p>Streamlined hospital operations with secure patient management, appointment scheduling, and comprehensive medical records.</p>
+                        <div class="hero-buttons">
+                            <button onclick="showPage('registerPage')" class="btn btn-primary btn-lg">Get Started</button>
+                            <button onclick="scrollToSection('about')" class="btn btn-outline btn-lg">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=Hospital+Management" alt="Hospital Management">
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about">
+                <div class="container">
+                    <h2>About MediCare</h2>
+                    <p>Our Hospital Management System provides a comprehensive solution for healthcare facilities to manage patients, doctors, appointments, and medical records efficiently.</p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Patient Management</h3>
+                            <p>Complete patient registration, medical history tracking, and appointment scheduling.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3>Doctor Portal</h3>
+                            <p>Dedicated dashboard for doctors to manage appointments and patient records.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Admin Control</h3>
+                            <p>Administrative tools for managing hospital operations and staff approval.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-video"></i>
+                            <h3>Video Consultations</h3>
+                            <p>Secure video calling system for remote consultations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" class="services">
+                <div class="container">
+                    <h2>Our Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>Online Consultations</h3>
+                            <p>Book appointments with our qualified doctors for online consultations.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Medical Records</h3>
+                            <p>Secure digital storage and management of all medical records and reports.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Emergency Services</h3>
+                            <p>24/7 emergency medical services with rapid response teams.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact">
+                <div class="container">
+                    <h2>Contact Us</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>info@medicare.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Address</h3>
+                            <p>123 Medical Center Dr, Healthcare City, HC 12345</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>MediCare</span>
+                    </div>
+                    <p>&copy; 2025 MediCare Hospital Management System. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Patient Dashboard -->
+    <div id="patientDashboard" class="page dashboard" style="display: none;">
+        <div class="dashboard-container">
+            <div class="dashboard-sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>MediCare</span>
+                    </div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" onclick="showDashboardSection('patient-overview')">
+                        <i class="fas fa-home"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('patient-appointments')">
+                        <i class="fas fa-calendar"></i>
+                        <span>Appointments</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('patient-medical-records')">
+                        <i class="fas fa-file-medical"></i>
+                        <span>Medical Records</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="dashboard-main">
+                <div class="dashboard-header">
+                    <h1>Patient Dashboard</h1>
+                    <div class="user-info">
+                        <span class="user-name">John Doe</span>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+
+                <div id="patient-overview" class="dashboard-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-calendar-check"></i>
+                            <h3 id="patientAppointments">0</h3>
+                            <p>Total Appointments</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3>3</h3>
+                            <p>Doctors Consulted</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-file-medical"></i>
+                            <h3>5</h3>
+                            <p>Medical Records</p>
+                        </div>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="content-card">
+                            <h3>Recent Appointments</h3>
+                            <div id="patientAppointmentsList">
+                                <p>Loading appointments...</p>
+                            </div>
+                            <button onclick="openModal('appointmentModal')" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Book New Appointment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="patient-appointments" class="dashboard-section" style="display: none;">
+                    <h2>My Appointments</h2>
+                    <div id="allPatientAppointments">
+                        <p>Loading all appointments...</p>
+                    </div>
+                </div>
+
+                <div id="patient-medical-records" class="dashboard-section" style="display: none;">
+                    <h2>Medical Records</h2>
+                    <div class="medical-records">
+                        <p>Your medical records will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctor Dashboard -->
+    <div id="doctorDashboard" class="page dashboard" style="display: none;">
+        <div class="dashboard-container">
+            <div class="dashboard-sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>MediCare</span>
+                    </div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" onclick="showDashboardSection('doctor-overview')">
+                        <i class="fas fa-home"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('doctor-appointments')">
+                        <i class="fas fa-calendar"></i>
+                        <span>Appointments</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('doctor-patients')">
+                        <i class="fas fa-users"></i>
+                        <span>Patients</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="dashboard-main">
+                <div class="dashboard-header">
+                    <h1>Doctor Dashboard</h1>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Smith</span>
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+
+                <div id="doctor-overview" class="dashboard-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-calendar-check"></i>
+                            <h3 id="doctorTotalAppointments">0</h3>
+                            <p>Total Appointments</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-calendar-day"></i>
+                            <h3 id="doctorTodayAppointments">0</h3>
+                            <p>Today's Appointments</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <h3>25</h3>
+                            <p>Total Patients</p>
+                        </div>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="content-card">
+                            <h3>Today's Appointments</h3>
+                            <div id="doctorAppointmentsList">
+                                <p>Loading appointments...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="doctor-appointments" class="dashboard-section" style="display: none;">
+                    <h2>All Appointments</h2>
+                    <div id="allDoctorAppointments">
+                        <p>Loading all appointments...</p>
+                    </div>
+                </div>
+
+                <div id="doctor-patients" class="dashboard-section" style="display: none;">
+                    <h2>My Patients</h2>
+                    <div class="patients-list">
+                        <p>Patient list will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="page dashboard" style="display: none;">
+        <div class="dashboard-container">
+            <div class="dashboard-sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>MediCare</span>
+                    </div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" onclick="showDashboardSection('admin-overview')">
+                        <i class="fas fa-home"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('admin-doctors')">
+                        <i class="fas fa-user-md"></i>
+                        <span>Doctor Approvals</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('admin-users')">
+                        <i class="fas fa-users"></i>
+                        <span>User Management</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="dashboard-main">
+                <div class="dashboard-header">
+                    <h1>Admin Dashboard</h1>
+                    <div class="user-info">
+                        <span class="user-name">Administrator</span>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+
+                <div id="admin-overview" class="dashboard-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <h3 id="totalPatients">0</h3>
+                            <p>Total Patients</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3 id="totalDoctors">0</h3>
+                            <p>Active Doctors</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <h3 id="pendingDoctors">0</h3>
+                            <p>Pending Approvals</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-calendar-check"></i>
+                            <h3 id="totalAppointments">0</h3>
+                            <p>Total Appointments</p>
+                        </div>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="content-card">
+                            <h3>System Overview</h3>
+                            <p>Welcome to the MediCare Admin Dashboard. Monitor and manage all hospital operations from here.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="admin-doctors" class="dashboard-section" style="display: none;">
+                    <h2>Doctor Approvals</h2>
+                    <div class="content-card">
+                        <h3>Pending Doctor Applications</h3>
+                        <div id="pendingDoctorsList">
+                            <p>Loading pending doctors...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="admin-users" class="dashboard-section" style="display: none;">
+                    <h2>User Management</h2>
+                    <div class="content-card">
+                        <h3>All Users</h3>
+                        <p>User management features will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment Modal -->
+    <div id="appointmentModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book New Appointment</h3>
+                <span class="close" onclick="closeModal('appointmentModal')">&times;</span>
+            </div>
+            <form id="appointmentForm" onsubmit="bookAppointment(event)">
+                <div class="form-group">
+                    <label for="doctorSelect">Select Doctor</label>
+                    <select id="doctorSelect" name="doctorId" required>
+                        <option value="">Choose a doctor...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentDate">Appointment Date</label>
+                    <input type="date" id="appointmentDate" name="appointmentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">Appointment Time</label>
+                    <select id="appointmentTime" name="appointmentTime" required>
+                        <option value="">Select time...</option>
+                        <option value="09:00">09:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="14:00">02:00 PM</option>
+                        <option value="15:00">03:00 PM</option>
+                        <option value="16:00">04:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentType">Appointment Type</label>
+                    <select id="appointmentType" name="appointmentType" required>
+                        <option value="consultation">Consultation</option>
+                        <option value="follow-up">Follow-up</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="symptoms">Symptoms/Reason</label>
+                    <textarea id="symptoms" name="symptoms" rows="3" placeholder="Describe your symptoms or reason for visit"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('appointmentModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Book Appointment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

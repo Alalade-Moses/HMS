@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MediCare Hospital Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="registerPage" class="page auth-page active">
+        <div class="auth-container">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>MediCare</span>
+                </div>
+                <h2>Create Account</h2>
+                <p>Join our healthcare community</p>
+            </div>
+
+            <form id="registerForm" class="auth-form" onsubmit="handleRegister(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Enter last name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter password">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm password">
+                </div>
+
+                <div class="form-group">
+                    <label>Account Type</label>
+                    <div class="role-selection">
+                        <label class="radio-container">
+                            <input type="radio" name="role" value="patient" checked onchange="toggleDoctorFields()">
+                            <span class="radio-mark"></span>
+                            <div class="role-info">
+                                <strong>Patient</strong>
+                                <small>Book appointments and manage health records</small>
+                            </div>
+                        </label>
+                        <label class="radio-container">
+                            <input type="radio" name="role" value="doctor" onchange="toggleDoctorFields()">
+                            <span class="radio-mark"></span>
+                            <div class="role-info">
+                                <strong>Doctor</strong>
+                                <small>Manage appointments and patient consultations</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Doctor-specific fields -->
+                <div id="specialtyGroup" class="form-group" style="display: none;">
+                    <label for="specialty">Medical Specialty</label>
+                    <select id="specialty" name="specialty">
+                        <option value="">Select your specialty</option>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Dermatology">Dermatology</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                        <option value="Psychiatry">Psychiatry</option>
+                        <option value="Radiology">Radiology</option>
+                        <option value="Surgery">Surgery</option>
+                        <option value="Internal Medicine">Internal Medicine</option>
+                    </select>
+                </div>
+
+                <div id="licenseGroup" class="form-group" style="display: none;">
+                    <label for="licenseNumber">Medical License Number</label>
+                    <input type="text" id="licenseNumber" name="licenseNumber" placeholder="Enter your license number">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-user-plus"></i>
+                    Create Account
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                <p><a href="index.html">← Back to Home</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

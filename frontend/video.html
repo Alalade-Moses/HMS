@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Consultation - MediCare</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="videoCallPage" class="page video-page active">
+        <div class="video-container">
+            <div class="video-header">
+                <h2>Video Consultation</h2>
+                <div class="call-info">
+                    <span class="call-duration" id="callDuration">00:00</span>
+                    <span class="call-status">Connected</span>
+                </div>
+            </div>
+
+            <div class="video-content">
+                <div class="video-main">
+                    <video id="remoteVideo" class="remote-video" autoplay playsinline>
+                        <source src="https://via.placeholder.com/640x480/2563EB/FFFFFF?text=Remote+Video" type="video/mp4">
+                        <div class="video-placeholder">
+                            <i class="fas fa-user-circle"></i>
+                            <p>Waiting for remote video...</p>
+                        </div>
+                    </video>
+                    
+                    <div class="video-overlay">
+                        <div class="participant-info">
+                            <span class="participant-name">Dr. Sarah Johnson</span>
+                            <span class="participant-role">Cardiologist</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-sidebar">
+                    <div class="local-video-container">
+                        <video id="localVideo" class="local-video" autoplay muted playsinline></video>
+                        <div class="video-label">You</div>
+                    </div>
+
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <i class="fas fa-comments"></i>
+                            <span>Chat</span>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="chat-message system">
+                                <span class="message-time">10:30 AM</span>
+                                <span class="message-text">Video consultation started</span>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleChatKeyPress(event)">
+                            <button onclick="sendChatMessage()" class="btn btn-primary btn-sm">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-controls">
+                <div class="control-group">
+                    <button id="toggleMic" class="control-btn" onclick="toggleMicrophone()" title="Toggle Microphone">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button id="toggleCamera" class="control-btn" onclick="toggleCamera()" title="Toggle Camera">
+                        <i class="fas fa-video"></i>
+                    </button>
+                    <button class="control-btn" onclick="toggleScreen()" title="Share Screen">
+                        <i class="fas fa-desktop"></i>
+                    </button>
+                    <button class="control-btn" onclick="toggleChat()" title="Toggle Chat">
+                        <i class="fas fa-comments"></i>
+                    </button>
+                </div>
+
+                <div class="control-group">
+                    <button class="control-btn settings-btn" onclick="openSettings()" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="control-btn end-call-btn" onclick="endCall()" title="End Call">
+                        <i class="fas fa-phone-slash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call Settings Modal -->
+        <div id="settingsModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Call Settings</h3>
+                    <span class="close" onclick="closeModal('settingsModal')">&times;</span>
+                </div>
+                <div class="settings-content">
+                    <div class="setting-group">
+                        <label>Camera</label>
+                        <select id="cameraSelect">
+                            <option>Default Camera</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label>Microphone</label>
+                        <select id="microphoneSelect">
+                            <option>Default Microphone</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label>Speaker</label>
+                        <select id="speakerSelect">
+                            <option>Default Speaker</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('settingsModal')">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="applySettings()">Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Call Confirmation Modal -->
+        <div id="endCallModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>End Consultation</h3>
+                    <span class="close" onclick="closeModal('endCallModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to end this video consultation?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('endCallModal')">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmEndCall()">End Call</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <video id="localVideo" autoplay playsinline muted></video>
+  <video id="remoteVideo" autoplay playsinline></video>
+
+  <script src="/socket.io/socket.io.js"></script>
+<script src="video.js"></script>
+
+ <script src="script.js"></script>
+</body>
+</html>
